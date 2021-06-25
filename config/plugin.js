@@ -15,6 +15,10 @@ module.exports = {
     enable: true,
     package: 'egg-sequelize',
   },
+  parameters: {
+    enable: true,
+    package: 'egg-parameters',
+  },
   cors: {
     enable: true,
     package: 'egg-cors'

@@ -20,4 +20,14 @@ class TemplateController extends Controller {
         }
     }
 
+    async list() {
+
+    }
+
+    async updateTemplate() {
+
+    }
+
 }
+
+module.exports = TemplateController;

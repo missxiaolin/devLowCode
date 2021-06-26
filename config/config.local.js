@@ -3,7 +3,7 @@ module.exports = {
         dialect: 'mysql',
         host: '127.0.0.1',
         port: 3306,
-        database: '',
+        database: 'yoga',
         username: 'root',
         password: 'root',
         logging: false

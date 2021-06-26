@@ -17,7 +17,6 @@ class TemplateController extends Controller {
         const where = {};
         if (id) where.id = id;
         if (gitUrl) where.gitUrl = gitUrl;
-        console.log(this.ctx.model.Template)
         const result = await this.ctx.model.Template.findAll({
             where
         });
@@ -27,12 +26,55 @@ class TemplateController extends Controller {
         }
     }
 
-    async list() {
-
-    }
-
     async updateTemplate() {
-
+        const { params } = this.ctx;
+        const { name, gitUrl } = params;
+        const { model } = this.ctx;
+        if (gitUrl && name) {
+            try {
+                const result = await model.Template.findOne({
+                    where: {
+                        gitUrl
+                    }
+                })
+                if (result) {
+                    await model.Template.update(params, {
+                        where: {
+                            gitUrl
+                        }
+                    })
+                    const result = await model.Template.findOne({
+                        where: {
+                            gitUrl
+                        }
+                    })
+                    this.ctx.body = {
+                        success: true,
+                        result
+                    };
+                } else {
+                    const result = await model.Template.create({
+                        ...params,
+                        type: 0,
+                    });
+                    this.ctx.body = {
+                        success: true,
+                        result
+                    };
+                }
+            } catch (e) {
+                this.ctx.body = {
+                    showType: 0,
+                    result: e
+                };
+            }
+        } else {
+            this.ctx.body = 500;
+            this.ctx.body = {
+                showType: 0,
+                result: 'gitUrl || name 必填'
+            };
+        }
     }
 
 }

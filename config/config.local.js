@@ -9,7 +9,7 @@ module.exports = {
         logging: false
     },
     cors: {
-        allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+        allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
         credentials: true
     },
     security: {

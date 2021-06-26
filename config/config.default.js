@@ -27,14 +27,16 @@ module.exports = appInfo => {
   config.security = {
     // 关闭csrf
     csrf: {
-      enable: false
-    }
+      enable: false,
+      ignoreJSON: true
+    },
+    domainWhiteList: '*'
   };
 
   // 允许跨域的方法
   config.cors = {
-    origin: '*',
-    allowMethods: 'GET, PUT, POST, DELETE, PATCH'
+    origin: 'http://localhost:8080',
+    allowMethods: 'GET, PUT, POST, DELETE, PATCH, OPTIONS'
   };
 
   return {

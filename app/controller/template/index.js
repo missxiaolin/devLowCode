@@ -17,15 +17,16 @@ class TemplateController extends Controller {
         const where = {};
         if (id) where.id = id;
         if (gitUrl) where.gitUrl = gitUrl;
-        const result = await this.ctx.model.Template.findAll({
-            where
-        });
+        const result = await this.ctx.model.Template.findAll();
         this.ctx.body = {
             success: true,
             result
         }
     }
 
+    /**
+     * 
+     */
     async updateTemplate() {
         const { params } = this.ctx;
         const { name, gitUrl } = params;

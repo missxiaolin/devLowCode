@@ -39,6 +39,16 @@ module.exports = appInfo => {
     allowMethods: 'GET, PUT, POST, DELETE, PATCH, OPTIONS'
   };
 
+  config.sequelize = {
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    database: 'yoga',
+    username: 'root',
+    password: 'root',
+    logging: false
+  };
+
   return {
     ...config,
     ...userConfig,

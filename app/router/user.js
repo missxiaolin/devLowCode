@@ -5,6 +5,6 @@
  */
 module.exports = app => {
     const { router, controller } = app;
-    // 查询用户列表
-    router.get('/user/list', controller.user.list);
+    // 查询用户
+    router.get('/user/index', controller.user.index.index);
 };

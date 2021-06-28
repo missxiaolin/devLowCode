@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = app => {
-    const { STRING, INTEGER, DATE, BIGINT } = app.Sequelize;
+    const { STRING, INTEGER, DATE } = app.Sequelize;
 
     const Template = app.model.define('template', {
         id: { type: INTEGER, primaryKey: true, autoIncrement: true },
@@ -12,8 +12,8 @@ module.exports = app => {
         gitUrl: STRING(200),
         type: INTEGER,
         version: STRING(100),
-    }, {
-        paranoid: true
+        created_at: DATE,
+        updated_at: DATE,
     });
 
     return Template;

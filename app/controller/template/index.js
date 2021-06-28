@@ -2,6 +2,12 @@
 
 const Controller = require('egg').Controller;
 
+function toInt(str) {
+    if (typeof str === 'number') return str;
+    if (!str) return str;
+    return parseInt(str, 10) || 0;
+}
+
 /**
  * 模板
  */
@@ -10,22 +16,26 @@ class TemplateController extends Controller {
      * 查询
      */
     async query() {
-        const {
-            id,
-            gitUrl,
-        } = this.ctx.params;
-        const where = {};
-        if (id) where.id = id;
-        if (gitUrl) where.gitUrl = gitUrl;
-        const result = await this.ctx.model.Template.findAll();
-        this.ctx.body = {
-            success: true,
-            result
-        }
+        const ctx = this.ctx;
+        const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
+        ctx.body = await ctx.model.Template.findAll(query);
+
+        // const {
+        //     id,
+        //     gitUrl,
+        // } = this.ctx.params;
+        // const where = {};
+        // if (id) where.id = id;
+        // if (gitUrl) where.gitUrl = gitUrl;
+        // const result = await this.ctx.model.Template.findAll();
+        // this.ctx.body = {
+        //     success: true,
+        //     result: await ctx.model.Template.findAll()
+        // }
     }
 
     /**
-     * 
+     * 更新
      */
     async updateTemplate() {
         const { params } = this.ctx;

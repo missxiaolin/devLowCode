@@ -3,18 +3,19 @@
 module.exports = app => {
     const { STRING, INTEGER, DATE } = app.Sequelize;
 
-    const Template = app.model.define('template', {
+    const Projects = app.model.define('projects', {
         id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-        templateName: STRING(100),
-        author: STRING(100),
+        template_id: INTEGER,
         name: STRING(100),
-        snapshot: STRING(200),
-        gitUrl: STRING(200),
-        type: INTEGER,
+        page_config: STRING(1000),
+        git_config: STRING(1000),
+        release_info: STRING(1000),
         version: STRING(100),
+        desc: STRING(1000),
         created_at: DATE,
         updated_at: DATE,
+        deleted_at: DATE
     });
 
-    return Template;
+    return Projects;
 };

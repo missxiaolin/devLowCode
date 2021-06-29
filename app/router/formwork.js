@@ -5,6 +5,9 @@
  */
 module.exports = app => {
     const { router, controller } = app;
-    // 查询用户
-    router.get('/formwork/index', controller.formwork.index.index);
+    // 查询
+    router.get('/formwork/query', controller.formwork.index.index);
+    router.get('/formwork/list', controller.formwork.index.index);
+    // 修改
+    router.post('/formwork/update', controller.formwork.index.updateFormwork);
 };

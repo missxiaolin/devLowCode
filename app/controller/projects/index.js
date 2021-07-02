@@ -13,13 +13,16 @@ class ProjectsController extends Controller {
         ctx.body = await ctx.model.Projects.findAll(query);
     }
 
+    /**
+     * 查询
+     */
     async query() {
         const {
             id,
         } = this.ctx.params;
         const where = {};
         if (id) where.id = id;
-        const result = await this.ctx.model.Project.findAll({
+        const result = await this.ctx.model.Projects.findAll({
             where,
             order: [
                 // 将转义 title 并针对有效方向列表进行降序排列
@@ -27,9 +30,9 @@ class ProjectsController extends Controller {
             ]
         })
         result.forEach(project => {
-            project.pageConfig = JSON.parse(project.pageConfig)
-            project.gitConfig = JSON.parse(project.gitConfig)
-            project.releaseInfo = JSON.parse(project.releaseInfo)
+            project.pageConfig = JSON.parse(project.page_config)
+            project.gitConfig = JSON.parse(project.git_config)
+            project.releaseInfo = JSON.parse(project.release_info)
         })
         this.ctx.body = {
             success: true,

@@ -30,9 +30,9 @@ class ProjectsController extends Controller {
             ]
         })
         result.forEach(project => {
-            project.pageConfig = JSON.parse(project.page_config)
-            project.gitConfig = JSON.parse(project.git_config)
-            project.releaseInfo = JSON.parse(project.release_info)
+            project.page_config = JSON.parse(project.page_config)
+            project.git_config = JSON.parse(project.git_config)
+            project.release_info = JSON.parse(project.release_info)
         })
         this.ctx.body = {
             success: true,

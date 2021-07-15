@@ -7,4 +7,6 @@ module.exports = app => {
     const { router, controller } = app;
     // 查询
     router.get('/component/query', controller.component.index.index);
+    router.post('/component/add', controller.component.index.addComponent);
+  
 };

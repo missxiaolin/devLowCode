@@ -31,7 +31,35 @@ class ComponentController extends Controller {
         }
     }
 
+    async query() {
+        const { id, gitUrl } = this.ctx.params;
 
+        const where = formatWhereCase({ id, gitUrl });
+        this.ctx.body = {
+            success: true,
+            result: await this.ctx.model.Component.findAll({
+                where
+            }),
+        }
+    }
+
+    async updateComponent() {
+        const { model } = this.ctx;
+        const { params } = this.ctx
+        const { id, gitUrl } = params;
+        const where = formatWhereCase({ id, gitUrl });
+        try {
+            const result = await model.Component.update(params, {
+                where,
+            });
+            this.ctx.body = {
+                success: true,
+                result,
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     async addComponent() {
         const {

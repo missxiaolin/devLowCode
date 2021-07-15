@@ -8,5 +8,6 @@ module.exports = app => {
     // 查询
     router.get('/component/query', controller.component.index.index);
     router.post('/component/add', controller.component.index.addComponent);
-  
+    router.post('/component/update', controller.component.index.updateComponent);
+    router.get('/component/query', controller.component.index.query);
 };

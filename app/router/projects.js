@@ -6,5 +6,6 @@
 module.exports = app => {
     const { router, controller } = app;
     // 查询用户
-    router.get('/project/query', controller.projects.index.query);
+    router.get('/project/query', controller.project.index.query);
+    router.post('/project/createProject', controller.project.index.createProject);
 };
